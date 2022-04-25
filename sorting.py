@@ -24,9 +24,27 @@ def read_data(file_name):
     return dictionary_numbers
 
 
-def main():
-    print(read_data("numbers.csv"))
+def selection_sort(sequence, direction):
 
+   pocet_indexu = len(sequence)
+
+   for index in range(pocet_indexu):
+       minimum = index
+
+       for index_2 in range(minimum + 1, pocet_indexu):
+           if direction == 0:
+               if sequence[index_2] < sequence[minimum]:
+                   minimum = index_2
+           if direction == 1:
+               if sequence[index_2] > sequence[minimum]:
+                   minimum = index_2
+
+       sequence[index], sequence[minimum] = sequence[minimum], sequence[index]
+
+   return sequence
+
+def main():
+    print(selection_sort(read_data("numbers.csv")["series_1"], 0))
 
 if __name__ == '__main__':
     main()
