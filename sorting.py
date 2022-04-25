@@ -1,4 +1,5 @@
 import os
+import csv
 
 
 def read_data(file_name):
@@ -10,10 +11,21 @@ def read_data(file_name):
     """
     cwd_path = os.getcwd()
     file_path = os.path.join(cwd_path, file_name)
+    dictionary_numbers = dict()
+    with open(file_path, mode = "r") as csv_file:
+        reader = csv.DictReader(csv_file)
+
+        for row in reader:
+            for key, value in row.items():
+                if key not in dictionary_numbers:
+                    dictionary_numbers[key] = []
+                dictionary_numbers[key].append(int(value))
+
+    return dictionary_numbers
 
 
 def main():
-    pass
+    print(read_data("numbers.csv"))
 
 
 if __name__ == '__main__':
