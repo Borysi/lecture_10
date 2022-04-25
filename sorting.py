@@ -43,8 +43,37 @@ def selection_sort(sequence, direction):
 
    return sequence
 
+
+def bubble_sort(numbers_array):
+    pocet_operaci = 0
+    while pocet_operaci <= len(numbers_array):
+
+        index = 0
+        while index <= len(numbers_array) - 2:
+
+            if numbers_array[index] > numbers_array[index + 1]:
+
+                numbers_array[index], numbers_array[index + 1] = numbers_array[index + 1], numbers_array[index]
+
+            index += 1
+
+        pocet_operaci += 1
+
+    return numbers_array
+
+
+
+
+
+
+
+
+
+
+
+
 def main():
-    print(selection_sort(read_data("numbers.csv")["series_1"], 0))
+    print(bubble_sort(read_data("numbers.csv")["series_1"]))
 
 if __name__ == '__main__':
     main()
